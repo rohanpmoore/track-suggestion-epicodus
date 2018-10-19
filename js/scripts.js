@@ -117,7 +117,7 @@ $(document).ready(function() {
 
     var highValue = determineLargest(totalAnswers);
     if (hasNoResult(totalAnswers)) {
-      $("#noSuggestion").show();
+      $("#noResult").show();
     } else {
       $("#" + options[highValue]).show();
     }
@@ -128,6 +128,6 @@ $(document).ready(function() {
     };
     $("#output").show();
     $("#blankForm").hide();
-    // $("#formWrapper").hide();
+    $("#formWrapper").hide();
   });
 });
