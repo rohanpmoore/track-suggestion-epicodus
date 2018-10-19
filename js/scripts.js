@@ -20,7 +20,7 @@ var hasNoResult = function(scores) {
     }
   };
   return true;
-}
+};
 
 var createQuestionsArray = function(name, size) {
   var exitArray = [];
@@ -28,7 +28,7 @@ var createQuestionsArray = function(name, size) {
     exitArray.push(name + (i + 1));
   }
   return exitArray;
-}
+};
 
 var createAnswersArray = function(questionsArray) {
   var exitArray = [];
@@ -36,7 +36,7 @@ var createAnswersArray = function(questionsArray) {
     exitArray.push(parseInt($("#" + questionsArray[i]).val()));
   };
   return exitArray;
-}
+};
 
 var hasBlank = function(answersArray) {
   for (i = 0; i < answersArray.length; i++) {
@@ -45,7 +45,7 @@ var hasBlank = function(answersArray) {
     }
   };
   return false;
-}
+};
 
 $(document).ready(function() {
   $("form#quizForm").submit(function(event) {
@@ -53,31 +53,25 @@ $(document).ready(function() {
     var answerTally = [];
     var positiveQuestions = createQuestionsArray("positiveQuestion", positiveQuestionNumber);
     var negativeQuestions = createQuestionsArray("negativeQuestion", negativeQuestionNumber);
-    debugger;
     var positiveAnswers = createAnswersArray(positiveQuestions);
     var negativeAnswers = createAnswersArray(negativeQuestions);
-    debugger;
     for(i = 0; i < optionNumber; i++) {
       answerTally.push(0);
     };
-    debugger;
     if(hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
       $("#blankForm").show();
       return;
     }
-    debugger;
     for(i = 0; i < positiveQuestionNumber; i++) {
       if(positiveAnswers[i] != optionNumber) {
         answerTally[positiveAnswers[i]]++;
       }
     };
-    debugger;
     for(i = 0; i < negativeQuestionNumber; i++) {
       if(negativeAnswers[i] != optionNumber) {
         answerTally[negativeAnswers[i]]--;
       }
     };
-    debugger;
     var highValue = determineLargest(answerTally);
     if (hasNoResult(answerTally)) {
       $("#noSuggestion").show();
