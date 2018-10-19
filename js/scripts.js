@@ -25,7 +25,7 @@ var hasNoResult = function(scores) {
 
 var createQuestionsArray = function(name, size) {
   var exitArray = [];
-  for(i = 0; i < size; i++) {
+  for (i = 0; i < size; i++) {
     exitArray.push(name + (i + 1));
   }
   return exitArray;
@@ -33,7 +33,7 @@ var createQuestionsArray = function(name, size) {
 
 var createAnswersArray = function(questionsArray) {
   var exitArray = [];
-  for(i = 0; i < questionsArray.length; i++) {
+  for (i = 0; i < questionsArray.length; i++) {
     exitArray.push(parseInt($("#" + questionsArray[i]).val()));
   };
   return exitArray;
@@ -50,7 +50,7 @@ var hasBlank = function(answersArray) {
 
 var assemblePrefixArray = function(prefixString) {
   var exitArray = [];
-  for(i = 0; i < optionNumber; i++) {
+  for (i = 0; i < optionNumber; i++) {
     exitArray.push(prefixString + options[i]);
   };
   return exitArray;
@@ -58,8 +58,8 @@ var assemblePrefixArray = function(prefixString) {
 
 var addTotalArray = function(inputArray) {
   var exitArray = generateOptionArray();
-  for(i = 0; i < inputArray.length; i++) {
-    if(inputArray[i] != optionNumber) {
+  for (i = 0; i < inputArray.length; i++) {
+    if (inputArray[i] != optionNumber) {
       exitArray[inputArray[i]]++;
     }
   };
@@ -68,8 +68,8 @@ var addTotalArray = function(inputArray) {
 
 var subtractTotalArray = function(inputArray) {
   var exitArray = generateOptionArray();
-  for(i = 0; i < inputArray.length; i++) {
-    if(inputArray[i] != optionNumber) {
+  for (i = 0; i < inputArray.length; i++) {
+    if (inputArray[i] != optionNumber) {
       exitArray[inputArray[i]]--;
     }
   };
@@ -86,7 +86,7 @@ var combineTotalArray = function(inputArrayOne, inputArrayTwo) {
 
 var generateOptionArray = function() {
   var exitArray = [];
-  for(i = 0; i < optionNumber; i++) {
+  for (i = 0; i < optionNumber; i++) {
     exitArray.push(0);
   };
   return exitArray;
@@ -105,7 +105,7 @@ $(document).ready(function() {
     var totOptionsArray = assemblePrefixArray("tot");
     var allOptionsArray = [posOptionsArray, negOptionsArray, totOptionsArray];
 
-    if(hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
+    if (hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
       $("#blankForm").show();
       return;
     }
