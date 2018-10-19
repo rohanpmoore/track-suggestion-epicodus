@@ -16,22 +16,18 @@ $(document).ready(function() {
     var answerTally = [0, 0, 0, 0];
     var questions = [];
     var answers = []
-    debugger;
     for(i = 0; i < questionNumber; i++) {
       questions.push("question" + (i + 1));
     };
-    debugger;
     for(i = 0; i < questionNumber; i++) {
       answers.push(parseInt($("#" + questions[i]).val()));
     };
-    debugger;
     for(i = 0; i < questionNumber; i++) {
-      if(answers[i] === NaN) {
+      if(!answers[i] && answers[i] != 0) {
         $("#blankForm").show();
         return;
       }
     };
-    debugger;
     for(i = 0; i < questionNumber; i++) {
       answerTally[answers[i]]++;
     };
@@ -46,6 +42,6 @@ $(document).ready(function() {
       $("#csharp").show();
     }
     $("#blankForm").hide();
-    $("#quizForm").hide();
+    $("#formWrapper").hide();
   });
 });
