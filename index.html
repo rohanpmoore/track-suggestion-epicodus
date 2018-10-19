@@ -12,91 +12,69 @@
     <div class="container">
       <div id="formWrapper">
         <h1 class="jumbotron">What Course Should I Take at Epicodus?</h1>
-        <p id="intro-text">
-          Epicodus offers a variety of tracks for prospective students, and it can be hard to figure out which one to take.  Maybe you're new to programming and don't know the differences, or maybe you're familiar with them but are having trouble making the decision.  This site will suggest a course that best fits your preferences and provide links so you can explore whether it is truly the right option for you.
-        </p>
+        <p id="intro-text">Epicodus offers a variety of tracks for prospective students, and it can be hard to figure out which one to take.  Maybe you're new to programming and don't know the differences, or maybe you're familiar with them but are having trouble making the decision.  This site will suggest a course that best fits your preferences and provide links so you can explore whether it is truly the right option for you.</p>
+
         <form id="quizForm">
           <div class="form-group">
-            <label for="positiveQuestion1">PLACEHOLDER QUESTION</label>
+            <label for="positiveQuestion1">When you graduate, what size company would you prefer to work for?</label>
             <select class="form-control" id="positiveQuestion1">
               <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
+              <option value="4">Large</option>
+              <option value="4">Small</option>
+              <option value="4">No Preference</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="positiveQuestion2">PLACEHOLDER QUESTION</label>
+            <label for="positiveQuestion2">What type of work do you see yourself doing when you graduate?</label>
             <select class="form-control" id="positiveQuestion2">
               <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
+              <option value="0">I want to work on web applications</option>
+              <option value="1">I want to work on servers</option>
+              <option value="2">I want to work on Android applications</option>
+              <option value="3">I want to work on Microsoft software</option>
+              <option value="4">No Preference</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="positiveQuestion3">PLACEHOLDER QUESTION</label>
+            <label for="positiveQuestion3">Have you programmed before?</label>
             <select class="form-control" id="positiveQuestion3">
               <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
+              <option value="4">Yes, a lot</option>
+              <option value="4">Yes, a little</option>
+              <option value="4">No, but I want to learn</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="positiveQuestion4">PLACEHOLDER QUESTION</label>
+            <label for="positiveQuestion4">Why do you want to attend Epicodus?</label>
             <select class="form-control" id="positiveQuestion4">
               <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
+              <option value="4">I'm in the industry and want to learn new skills</option>
+              <option value="4">I want to move away from my current profession and into programming</option>
+              <option value="4">I'm coming here straight out of school and want to learn programming</option>
+              <option value="4">Other</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="positiveQuestion5">PLACEHOLDER QUESTION</label>
+            <label for="positiveQuestion5">Are you familiar with any of the languages Epicodus offers?</label>
             <select class="form-control" id="positiveQuestion5">
               <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
+              <option value="4">All of them</option>
+              <option value="4">Most of them</option>
+              <option value="4">A few of them</option>
+              <option value="4">None of them</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="negativeQuestion1">PLACEHOLDER NEGATIVE QUESTION</label>
-            <select class="form-control" id="negativeQuestion1">
-              <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="negativeQuestion2">PLACEHOLDER NEGATIVE QUESTION</label>
-            <select class="form-control" id="negativeQuestion2">
-              <option value=""></option>
-              <option value="0">PLACEHOLDER ANSWER RUBY</option>
-              <option value="1">PLACEHOLDER ANSWER PHP</option>
-              <option value="2">PLACEHOLDER ANSWER JAVA</option>
-              <option value="3">PLACEHOLDER ANSWER C##</option>
-              <option value="4">PLACEHOLDER ANSWER NONE</option>
-            </select>
-          </div>
+
           <button type="submit" class="btn-default">See your suggestion.</button>
         </form>
       </div>
+
       <p class="error-message" id="blankForm">One or more forms have been left blank, please fill out all forms before submitting.</p>
+
       <div id="ruby">
         <h1 class="jumbotron">Ruby/Rails</h1>
         <p class="result-text">I suggest that you look into the Ruby/Rails track offered by Epicodus.  Ruby is a favorite language of developers building interactive web applications, and is incredibly popular with newer companies, including startups.  The Rails framework build on top of Ruby helps simplify many otherwise difficult tasks, and learning both will give you a powerful tool for building web apps.<br><br>For more information on Ruby and Rails, follow the links below.</p>
@@ -106,6 +84,7 @@
           <li><a href="https://rubyonrails.org/">Ruby on Rails main website</a></li>
         </ul>
       </div>
+
       <div id="php">
         <h1 class="jumbotron">PHP/Drupal</h1>
         <p class="result-text">I suggest that you look into the PHP/Drupal track offered by Epicodus.  PHP is a favorite programming language for content=heavy websites, and is often paired with content management systems such as WordPress, Drupal, and Joomla.  It is a versatile language that is used across the industry and forms the backbone of many websites, including those run by the government.<br><br>For more information on PHP and Drupal, follow the links below.</p>
@@ -115,6 +94,7 @@
           <li><a href="https://www.w3schools.com/php/php_intro.asp">W3Schools' introduction to PHP 5</a></li>
         </ul>
       </div>
+
       <div id="java">
         <h1 class="jumbotron">Java/Android</h1>
         <p class="result-text">I suggest that you look into the Java/Android track offered by Epicodus.  Java is a programming language used across the industry for a wide variety of applications, and is the main programming language for Android applications.  If you want to learn to program Android devices, this is the programming language for you.<br><br>For more information on Java and Android development, follow the links below.</p>
@@ -123,6 +103,7 @@
           <li><a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java wikipedia page</a></li>
         </ul>
       </div>
+
       <div id="csharp">
         <h1 class="jumbotron">C##/.NET</h1>
         <p class="result-text">I suggest that you look into the C##/.NET track offered by Epicodus.  C## is a popular langauge among establish businesses and has the backing of Microsoft, so if you intend to work at a large company this is definitely a language you should learn.<br><br>For more information on C## and .NET, follow the links below.</p>
@@ -131,6 +112,7 @@
           <li><a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)">C## wikipedia page</a></li>
         </ul>
       </div>
+
       <div id="noResult">
         <h1 class="jumbotron">More Research</h1>
         <p class="result-text">I don't have a specific suggestion for you, you fall pretty well in the middle.  I'd recommend doing some more research into the various programming languages offered by Epicodus to figure out which one you like the most.<br><br>Some links have been provided below for you to peruse.</p>
@@ -142,6 +124,7 @@
           <li><a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)">C## wikipedia page</a></li>
         </ul>
       </div>
+
       <div id="output">
         <h2>Your inputs leading to this output were as follows:</h2>
         <p>Your positive results were:<br>
