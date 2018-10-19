@@ -127,7 +127,7 @@ $(document).ready(function() {
       };
     };
     //Uncomment the line below to receive full output feedback
-    //$("#output").show();
+    $("#output").show();
     $("#blankForm").hide();
     $("#formWrapper").hide();
   });
