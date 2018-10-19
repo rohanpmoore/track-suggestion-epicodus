@@ -1,7 +1,8 @@
 const positiveQuestionNumber = 5;
-/*While it is not used in this program, I added functionality for questions that subtract points from options in order to provide more options should the code be used again in the future*/
-const negativeQuestionNumber = 0;
+const negativeQuestionNumber = 2;
 const optionNumber = 4;
+const options = ["ruby", "php", "java", "csharp"];
+const answerTypes = ["positiveAnswers", "negativeAnswers", "totalAnswers"];
 
 var determineLargest = function(scores) {
   var highest = 0;
@@ -47,39 +48,50 @@ var hasBlank = function(answersArray) {
   return false;
 }
 
+var assemblePrefixArray = function(prefixString) {
+  var exitArray = [];
+  for(i = 0; i < optionNumber; i++) {
+    exitArray.push(prefixString + options[i]);
+  };
+  return exitArray;
+}
+
+
+
 $(document).ready(function() {
   $("form#quizForm").submit(function(event) {
     event.preventDefault();
-    var answerTally = [];
     var positiveQuestions = createQuestionsArray("positiveQuestion", positiveQuestionNumber);
     var negativeQuestions = createQuestionsArray("negativeQuestion", negativeQuestionNumber);
-    debugger;
     var positiveAnswers = createAnswersArray(positiveQuestions);
     var negativeAnswers = createAnswersArray(negativeQuestions);
-    debugger;
+    var posTotalAnswers = [];
+    var negTotalAnswers [];
+    var totalAnswers = [];
+    var allAnswers = [posTotalAnswers, negTotalAnswers, totalAnswers];
+    var posOptionsArray = assemblePrefixArray("pos");
+    var negOptionsArray = assemblePrefixArray("neg");
+    var totOptionsArray = assemblePrefixArray("tot");
+    var allOptionsArray = [posOptionsArray, negOptionsArray, totOptionsArray];
     for(i = 0; i < optionNumber; i++) {
-      answerTally.push(0);
+      totalAnswers.push(0);
     };
-    debugger;
     if(hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
       $("#blankForm").show();
       return;
     }
-    debugger;
     for(i = 0; i < positiveQuestionNumber; i++) {
       if(positiveAnswers[i] != optionNumber) {
-        answerTally[positiveAnswers[i]]++;
+        totalAnswers[positiveAnswers[i]]++;
       }
     };
-    debugger;
     for(i = 0; i < negativeQuestionNumber; i++) {
       if(negativeAnswers[i] != optionNumber) {
-        answerTally[negativeAnswers[i]]--;
+        totalAnswers[negativeAnswers[i]]--;
       }
     };
-    debugger;
-    var highValue = determineLargest(answerTally);
-    if (hasNoResult(answerTally)) {
+    var highValue = determineLargest(totalAnswers);
+    if (hasNoResult(totalAnswers)) {
       $("#noSuggestion").show();
     } else if (highValue === 0) {
       $("#ruby").show();
@@ -93,7 +105,14 @@ $(document).ready(function() {
       $("#invalidResult").show();
       return;
     }
+    debugger;
+    for (i = 0; i < 3; i++) {
+      for (j = 0; j < optionNumber; i++) {
+        $("#" + allOptionsArray[i][j]).text(allAnswers[i]);
+      };
+    };
+    $("#output").show();
     $("#blankForm").hide();
-    $("#formWrapper").hide();
+    // $("#formWrapper").hide();
   });
 });
