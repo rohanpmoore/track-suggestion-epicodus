@@ -9,6 +9,33 @@
     <title></title>
   </head>
   <body>
-
+    <div class="container">
+      <div class="formWrapper">
+        <h1 class="jumbotron">What Course Should I Take at Epicodus?</h1>
+        <p id="intro-text">Epicodus offers a variety of tracks for prospective students, and it can be hard to figure out which one to take.  Maybe you're new to programming and don't know the differences, or maybe you're familiar with them but are having trouble making the decision.  This site will suggest a course that best fits your preferences and provide links so you can explore whether it is truly the right option for you.</p>
+        <form id="quizForm">
+          <div class="form-group">
+            <label for="questionOne">When you graduate, what size company would you prefer to work for?</label>
+            <select class="form-control" id="questionOne">
+              <option value=""></option>
+              <option value="C##">Large</option>
+              <option value="Ruby">Small</option>
+              <option value="Java">No Preference</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="questionTwo">Would you prefer to develop the user interface or the server?</label>
+            <select class="form-control" id="questionTwo">
+              <option value=""></option>
+              <option value="Ruby">User Interface</option>
+              <option value="PHP">Server</option>
+              <option value="none">No Preference</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-default">See your suggestion.</button>
+        </form>
+      </div>
+      <p class="error-message" id="blank-form">One or more forms have been left blank, please fill out all forms before submitting.</p>
+    </div>
   </body>
 </html>
