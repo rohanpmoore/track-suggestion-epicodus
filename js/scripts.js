@@ -1,5 +1,5 @@
 const positiveQuestionNumber = 5;
-const negativeQuestionNumber = 2;
+const negativeQuestionNumber = 0;
 const optionNumber = 4;
 const options = ["ruby", "php", "java", "csharp"];
 
@@ -131,5 +131,7 @@ $(document).ready(function() {
     $("#output").show();
     $("#blankForm").hide();
     $("#formWrapper").hide();
+    $("#back").show();
   });
+  $("form#back").submit(function(event) {});
 });
