@@ -22,32 +22,62 @@ var hasNoResult = function(scores) {
   return true;
 }
 
+var createQuestionsArray = function(name, size) {
+  var exitArray = [];
+  for(i = 0; i < size; i++) {
+    exitArray.push(name + (i + 1));
+  }
+  return exitArray;
+}
+
+var createAnswersArray = function(questionsArray) {
+  var exitArray = [];
+  for(i = 0; i < questionsArray.length; i++) {
+    exitArray.push(parseInt($("#" + questionsArray[i]).val()));
+  };
+  return exitArray;
+}
+
+var hasBlank = function(answersArray) {
+  for (i = 0; i < answersArray.length; i++) {
+    if (!answersArray[i] && answersArray[i] != 0) {
+      return true;
+    }
+  };
+  return false;
+}
+
 $(document).ready(function() {
   $("form#quizForm").submit(function(event) {
     event.preventDefault();
     var answerTally = [];
-    var questions = [];
-    var answers = []
+    var positiveQuestions = createQuestionsArray("positiveQuestion", positiveQuestionNumber);
+    var negativeQuestions = createQuestionsArray("negativeQuestion", negativeQuestionNumber);
+    debugger;
+    var positiveAnswers = createAnswersArray(positiveQuestions);
+    var negativeAnswers = createAnswersArray(negativeQuestions);
+    debugger;
     for(i = 0; i < optionNumber; i++) {
       answerTally.push(0);
+    };
+    debugger;
+    if(hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
+      $("#blankForm").show();
+      return;
     }
+    debugger;
     for(i = 0; i < positiveQuestionNumber; i++) {
-      questions.push("positiveQuestion" + (i + 1));
-    };
-    for(i = 0; i < positiveQuestionNumber; i++) {
-      answers.push(parseInt($("#" + questions[i]).val()));
-    };
-    for(i = 0; i < positiveQuestionNumber; i++) {
-      if(!answers[i] && answers[i] != 0) {
-        $("#blankForm").show();
-        return;
+      if(positiveAnswers[i] != optionNumber) {
+        answerTally[positiveAnswers[i]]++;
       }
     };
-    for(i = 0; i < positiveQuestionNumber; i++) {
-      if(answers[i] != optionNumber) {
-        answerTally[answers[i]]++;
+    debugger;
+    for(i = 0; i < negativeQuestionNumber; i++) {
+      if(negativeAnswers[i] != optionNumber) {
+        answerTally[negativeAnswers[i]]--;
       }
     };
+    debugger;
     var highValue = determineLargest(answerTally);
     if (hasNoResult(answerTally)) {
       $("#noSuggestion").show();
