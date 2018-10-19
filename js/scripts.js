@@ -1,7 +1,8 @@
 const positiveQuestionNumber = 5;
-/*While it is not used in this program, I added functionality for questions that subtract points from options in order to provide more options should the code be used again in the future*/
-const negativeQuestionNumber = 0;
+const negativeQuestionNumber = 2;
 const optionNumber = 4;
+const options = ["ruby", "php", "java", "csharp"];
+const answerTypes = ["positiveAnswers", "negativeAnswers", "totalAnswers"];
 
 var determineLargest = function(scores) {
   var highest = 0;
@@ -47,46 +48,86 @@ var hasBlank = function(answersArray) {
   return false;
 };
 
+var assemblePrefixArray = function(prefixString) {
+  var exitArray = [];
+  for(i = 0; i < optionNumber; i++) {
+    exitArray.push(prefixString + options[i]);
+  };
+  return exitArray;
+};
+
+var addTotalArray = function(inputArray) {
+  var exitArray = generateOptionArray();
+  for(i = 0; i < inputArray.length; i++) {
+    if(inputArray[i] != optionNumber) {
+      exitArray[inputArray[i]]++;
+    }
+  };
+  return exitArray;
+};
+
+var subtractTotalArray = function(inputArray) {
+  var exitArray = generateOptionArray();
+  for(i = 0; i < inputArray.length; i++) {
+    if(inputArray[i] != optionNumber) {
+      exitArray[inputArray[i]]--;
+    }
+  };
+  return exitArray;
+};
+
+var combineTotalArray = function(inputArrayOne, inputArrayTwo) {
+  var exitArray = [];
+  for (i = 0; i < inputArrayOne.length; i++) {
+    exitArray.push(inputArrayOne[i] + inputArrayTwo[i]);
+  };
+  return exitArray;
+};
+
+var generateOptionArray = function() {
+  var exitArray = [];
+  for(i = 0; i < optionNumber; i++) {
+    exitArray.push(0);
+  };
+  return exitArray;
+};
+
 $(document).ready(function() {
   $("form#quizForm").submit(function(event) {
     event.preventDefault();
-    var answerTally = [];
+
     var positiveQuestions = createQuestionsArray("positiveQuestion", positiveQuestionNumber);
     var negativeQuestions = createQuestionsArray("negativeQuestion", negativeQuestionNumber);
     var positiveAnswers = createAnswersArray(positiveQuestions);
     var negativeAnswers = createAnswersArray(negativeQuestions);
-    for(i = 0; i < optionNumber; i++) {
-      answerTally.push(0);
-    };
+    var posOptionsArray = assemblePrefixArray("pos");
+    var negOptionsArray = assemblePrefixArray("neg");
+    var totOptionsArray = assemblePrefixArray("tot");
+    var allOptionsArray = [posOptionsArray, negOptionsArray, totOptionsArray];
+
     if(hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
       $("#blankForm").show();
       return;
     }
-    for(i = 0; i < positiveQuestionNumber; i++) {
-      if(positiveAnswers[i] != optionNumber) {
-        answerTally[positiveAnswers[i]]++;
-      }
-    };
-    for(i = 0; i < negativeQuestionNumber; i++) {
-      if(negativeAnswers[i] != optionNumber) {
-        answerTally[negativeAnswers[i]]--;
-      }
-    };
-    var highValue = determineLargest(answerTally);
-    if (hasNoResult(answerTally)) {
-      $("#noSuggestion").show();
-    } else if (highValue === 0) {
-      $("#ruby").show();
-    } else if (highValue === 1) {
-      $("#php").show();
-    } else if (highValue === 2) {
-      $("#java").show();
-    } else if (highValue === 3) {
-      $("#csharp").show();
+
+    var posTotalAnswers = addTotalArray(positiveAnswers);
+    var negTotalAnswers = subtractTotalArray(negativeAnswers);
+    var totalAnswers = combineTotalArray(posTotalAnswers, negTotalAnswers);
+    var allAnswers = [posTotalAnswers, negTotalAnswers, totalAnswers];
+
+    var highValue = determineLargest(totalAnswers);
+    if (hasNoResult(totalAnswers)) {
+      $("#noResult").show();
     } else {
-      $("#invalidResult").show();
-      return;
+      $("#" + options[highValue]).show();
     }
+    for (i = 0; i < 3; i++) {
+      for (j = 0; j < optionNumber; j++) {
+        $("#" + allOptionsArray[i][j]).text(allAnswers[i][j]);
+      };
+    };
+    //Uncomment the line below to receive full output feedback
+    //$("#output").show();
     $("#blankForm").hide();
     $("#formWrapper").hide();
   });
