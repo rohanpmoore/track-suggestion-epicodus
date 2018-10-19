@@ -32,7 +32,7 @@ $(document).ready(function() {
       answerTally.push(0);
     }
     for(i = 0; i < positiveQuestionNumber; i++) {
-      questions.push("question" + (i + 1));
+      questions.push("positiveQuestion" + (i + 1));
     };
     for(i = 0; i < positiveQuestionNumber; i++) {
       answers.push(parseInt($("#" + questions[i]).val()));
@@ -48,7 +48,6 @@ $(document).ready(function() {
         answerTally[answers[i]]++;
       }
     };
-    debugger;
     var highValue = determineLargest(answerTally);
     if (hasNoResult(answerTally)) {
       $("#noSuggestion").show();
