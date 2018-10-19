@@ -130,7 +130,6 @@ $(document).ready(function() {
       $("#invalidResult").show();
       return;
     }
-    debugger;
     for (i = 0; i < 3; i++) {
       for (j = 0; j < optionNumber; j++) {
         $("#" + allOptionsArray[i][j]).text(allAnswers[i][j]);
