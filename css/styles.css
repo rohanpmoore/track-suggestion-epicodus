@@ -4,7 +4,6 @@ body {
 
 h1.jumbotron {
   font-family: cursive;
-  /* background-color: lightgreen; */
   text-align: center;
 }
 
@@ -24,7 +23,7 @@ h1.jumbotron {
   display: none;
 }
 
-#blankForm {
+#noSuggestion {
   display: none;
 }
 
@@ -39,6 +38,7 @@ h1.jumbotron {
 }
 
 .error-message {
+  display: none;
   text-decoration: underline;
   color: red;
   font-weight: bold;

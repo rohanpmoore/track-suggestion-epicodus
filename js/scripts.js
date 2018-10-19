@@ -3,13 +3,22 @@ const optionNumber = 4;
 
 var determineLargest = function(scores) {
   var highest = 0;
-  for (i=1; i< scores.length; i++) {
+  for (i = 1; i < scores.length; i++) {
     if (scores[i] > scores[highest]) {
       highest = i;
     }
   }
   return highest;
 };
+
+var hasNoResult = function(scores) {
+  for (i = 0; i < scores.length; i++) {
+    if (scores[i] >= 0) {
+      return false;
+    }
+  };
+  return true;
+}
 
 $(document).ready(function() {
   $("form#quizForm").submit(function(event) {
@@ -35,14 +44,19 @@ $(document).ready(function() {
       }
     };
     var highValue = determineLargest(answerTally);
-    if (highValue === 0) {
+    if (noResult) {
+      $("#noSuggestion").show();
+    } else if (highValue === 0) {
       $("#ruby").show();
     } else if (highValue === 1) {
       $("#php").show();
     } else if (highValue === 2) {
       $("#java").show();
-    } else {
+    } else if (highValue === 3) {
       $("#csharp").show();
+    } else {
+      $("#invalidResult").show();
+      return;
     }
     $("#blankForm").hide();
     $("#formWrapper").hide();
