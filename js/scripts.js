@@ -126,7 +126,8 @@ $(document).ready(function() {
         $("#" + allOptionsArray[i][j]).text(allAnswers[i][j]);
       };
     };
-    $("#output").show();
+    //Uncomment the line below to receive full output feedback
+    //$("#output").show();
     $("#blankForm").hide();
     $("#formWrapper").hide();
   });
