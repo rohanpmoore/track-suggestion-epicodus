@@ -21,7 +21,7 @@ var hasNoResult = function(scores) {
     }
   };
   return true;
-}
+};
 
 var createQuestionsArray = function(name, size) {
   var exitArray = [];
@@ -29,7 +29,7 @@ var createQuestionsArray = function(name, size) {
     exitArray.push(name + (i + 1));
   }
   return exitArray;
-}
+};
 
 var createAnswersArray = function(questionsArray) {
   var exitArray = [];
@@ -37,7 +37,7 @@ var createAnswersArray = function(questionsArray) {
     exitArray.push(parseInt($("#" + questionsArray[i]).val()));
   };
   return exitArray;
-}
+};
 
 var hasBlank = function(answersArray) {
   for (i = 0; i < answersArray.length; i++) {
@@ -46,7 +46,7 @@ var hasBlank = function(answersArray) {
     }
   };
   return false;
-}
+};
 
 var assemblePrefixArray = function(prefixString) {
   var exitArray = [];
@@ -54,42 +54,67 @@ var assemblePrefixArray = function(prefixString) {
     exitArray.push(prefixString + options[i]);
   };
   return exitArray;
-}
+};
 
+var addTotalArray = function(inputArray) {
+  var exitArray = generateOptionArray();
+  for(i = 0; i < inputArray.length; i++) {
+    if(inputArray[i] != optionNumber) {
+      exitArray[inputArray[i]]++;
+    }
+  };
+  return exitArray;
+};
 
+var subtractTotalArray = function(inputArray) {
+  var exitArray = generateOptionArray();
+  for(i = 0; i < inputArray.length; i++) {
+    if(inputArray[i] != optionNumber) {
+      exitArray[inputArray[i]]--;
+    }
+  };
+  return exitArray;
+};
+
+var combineTotalArray = function(inputArrayOne, inputArrayTwo) {
+  var exitArray = [];
+  for (i = 0; i < inputArrayOne.length; i++) {
+    exitArray.push(inputArrayOne[i] + inputArrayTwo[i]);
+  };
+  return exitArray;
+};
+
+var generateOptionArray = function() {
+  var exitArray = [];
+  for(i = 0; i < optionNumber; i++) {
+    exitArray.push(0);
+  };
+  return exitArray;
+};
 
 $(document).ready(function() {
   $("form#quizForm").submit(function(event) {
     event.preventDefault();
+
     var positiveQuestions = createQuestionsArray("positiveQuestion", positiveQuestionNumber);
     var negativeQuestions = createQuestionsArray("negativeQuestion", negativeQuestionNumber);
     var positiveAnswers = createAnswersArray(positiveQuestions);
     var negativeAnswers = createAnswersArray(negativeQuestions);
-    var posTotalAnswers = [];
-    var negTotalAnswers [];
-    var totalAnswers = [];
-    var allAnswers = [posTotalAnswers, negTotalAnswers, totalAnswers];
     var posOptionsArray = assemblePrefixArray("pos");
     var negOptionsArray = assemblePrefixArray("neg");
     var totOptionsArray = assemblePrefixArray("tot");
     var allOptionsArray = [posOptionsArray, negOptionsArray, totOptionsArray];
-    for(i = 0; i < optionNumber; i++) {
-      totalAnswers.push(0);
-    };
+
     if(hasBlank(positiveAnswers) || hasBlank(negativeAnswers)) {
       $("#blankForm").show();
       return;
     }
-    for(i = 0; i < positiveQuestionNumber; i++) {
-      if(positiveAnswers[i] != optionNumber) {
-        totalAnswers[positiveAnswers[i]]++;
-      }
-    };
-    for(i = 0; i < negativeQuestionNumber; i++) {
-      if(negativeAnswers[i] != optionNumber) {
-        totalAnswers[negativeAnswers[i]]--;
-      }
-    };
+
+    var posTotalAnswers = addTotalArray(positiveAnswers);
+    var negTotalAnswers = subtractTotalArray(negativeAnswers);
+    var totalAnswers = combineTotalArray(posTotalAnswers, negTotalAnswers);
+    var allAnswers = [posTotalAnswers, negTotalAnswers, totalAnswers];
+
     var highValue = determineLargest(totalAnswers);
     if (hasNoResult(totalAnswers)) {
       $("#noSuggestion").show();
@@ -107,8 +132,8 @@ $(document).ready(function() {
     }
     debugger;
     for (i = 0; i < 3; i++) {
-      for (j = 0; j < optionNumber; i++) {
-        $("#" + allOptionsArray[i][j]).text(allAnswers[i]);
+      for (j = 0; j < optionNumber; j++) {
+        $("#" + allOptionsArray[i][j]).text(allAnswers[i][j]);
       };
     };
     $("#output").show();
