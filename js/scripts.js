@@ -1,4 +1,5 @@
 const questionNumber = 5;
+const optionNumber = 4;
 
 var determineLargest = function(scores) {
   var highest = 0;
@@ -29,7 +30,9 @@ $(document).ready(function() {
       }
     };
     for(i = 0; i < questionNumber; i++) {
-      answerTally[answers[i]]++;
+      if(answers[i] != optionNumber) {
+        answerTally[answers[i]]++;
+      }
     };
     var highValue = determineLargest(answerTally);
     if (highValue === 0) {
