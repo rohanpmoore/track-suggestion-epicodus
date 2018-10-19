@@ -31,6 +31,7 @@ $(document).ready(function() {
         return;
       }
     };
+    debugger;
     for(i = 0; i < questionNumber; i++) {
       answerTally[answers[i]]++;
     };
