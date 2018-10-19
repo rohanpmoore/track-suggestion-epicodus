@@ -8,12 +8,6 @@
 
 _This program is a short quiz to help prospective Epicodus students decide which track is right for them.  It asks the user questions about their preferences and what they wish to do in the future and suggests a track based on their answers._
 
-Some pictures of the website layout:
-
-![First site picture]()
-
-![Second site picture]()
-
 ## Setup/Installation Instructions
 
 1. _Clone this project from its [Github repository](https://github.com/rohanpmoore/track-suggestion-epicodus)._
