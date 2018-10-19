@@ -2,7 +2,6 @@ const positiveQuestionNumber = 5;
 const negativeQuestionNumber = 2;
 const optionNumber = 4;
 const options = ["ruby", "php", "java", "csharp"];
-const answerTypes = ["positiveAnswers", "negativeAnswers", "totalAnswers"];
 
 var determineLargest = function(scores) {
   var highest = 0;
