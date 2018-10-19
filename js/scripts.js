@@ -118,17 +118,8 @@ $(document).ready(function() {
     var highValue = determineLargest(totalAnswers);
     if (hasNoResult(totalAnswers)) {
       $("#noSuggestion").show();
-    } else if (highValue === 0) {
-      $("#ruby").show();
-    } else if (highValue === 1) {
-      $("#php").show();
-    } else if (highValue === 2) {
-      $("#java").show();
-    } else if (highValue === 3) {
-      $("#csharp").show();
     } else {
-      $("#invalidResult").show();
-      return;
+      $("#" + options[highValue]).show();
     }
     for (i = 0; i < 3; i++) {
       for (j = 0; j < optionNumber; j++) {
