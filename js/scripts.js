@@ -1,5 +1,5 @@
 const positiveQuestionNumber = 5;
-const negativeQuestionNumber = 0;
+const negativeQuestionNumber = 2;
 const optionNumber = 4;
 const options = ["ruby", "php", "java", "csharp"];
 
