@@ -114,18 +114,20 @@ $(document).ready(function() {
     var negTotalAnswers = subtractTotalArray(negativeAnswers);
     var totalAnswers = combineTotalArray(posTotalAnswers, negTotalAnswers);
     var allAnswers = [posTotalAnswers, negTotalAnswers, totalAnswers];
-
     var highValue = determineLargest(totalAnswers);
+
     if (hasNoResult(totalAnswers)) {
       $("#noResult").show();
     } else {
       $("#" + options[highValue]).show();
     }
+
     for (i = 0; i < 3; i++) {
       for (j = 0; j < optionNumber; j++) {
         $("#" + allOptionsArray[i][j]).text(allAnswers[i][j]);
       };
     };
+
     //Uncomment the line below to receive full output feedback
     //$("#output").show();
     $("#blankForm").hide();
