@@ -1,0 +1,44 @@
+body {
+  background-color: lightyellow;
+}
+
+h1.jumbotron {
+  font-family: cursive;
+  background-color: lightgreen;
+  text-align: center;
+}
+
+#ruby {
+  display: none;
+}
+
+#php {
+  display: none;
+}
+
+#java {
+  display: none;
+}
+
+#csharp {
+  display: none;
+}
+
+#blank-form {
+  display: none;
+}
+
+#intro-text {
+  font-size: 12pt;
+  text-align: justify;
+}
+
+.error-message {
+  text-decoration: underline;
+  color: red;
+  font-weight: bold;
+}
+
+.result-text {
+  font-size: 12pt;
+}
