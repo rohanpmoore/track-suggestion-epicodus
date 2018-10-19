@@ -13,6 +13,8 @@ _This program is a short quiz to help prospective Epicodus students decide which
 1. _Clone this project from its [Github repository](https://github.com/rohanpmoore/track-suggestion-epicodus).  The master branch contains a basic working version complete with actual questions, while the demonstration branch demonstrates the full features of the site with placeholder text._
 2. _Run index.html, which will bring you to the portfolio home page._
 
+_Alternatively, you can visit the GH-Pages version of the website [here](https://rohanpmoore.github.io/track-suggestion-epicodus/)._
+
 ## Known Bugs
 
 * _No bugs currently known._
